@@ -13,7 +13,7 @@ class Settings:
         self.ship_speed_factor = 2.0
 
         # Ghost settings
-        self.ghost_image = None
+        self.ghost_image = 'images/creepy.png'
         self.ghost_speed_factor = 3
 
         # Bullet settings
