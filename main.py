@@ -3,6 +3,7 @@ import pygame
 
 from ship import Ship
 from bullet import Bullet
+from ghost import Ghost
 from settings import Settings
 
 class AlienInvasion:
@@ -29,6 +30,8 @@ class AlienInvasion:
         # to give Ship object access to the game's resources
         self.ship = Ship(self)
         self.bullets = pygame.sprite.Group()
+        self.ghost = pygame.sprite.Group()
+        self._create_fantasma()
 
     def run_game(self):
         """Start the main loop for the game."""
@@ -101,6 +104,12 @@ class AlienInvasion:
         for bullet in self.bullets.copy():
             if bullet.rect.bottom <= 0:
                 self.bullets.remove(bullet)
+
+    def _create_fantasma(self):
+        """Create a ghost and place it at the top center of the screen."""
+        # Create a new ghost and add it to the ghost group.
+        new_ghost = Ghost(self)
+        self.ghost.add(new_ghost)
     
     def _update_screen(self):
         """Update images on the screen and flip to the new screen."""
@@ -109,6 +118,8 @@ class AlienInvasion:
         self.ship.blitme()
         for bullet in self.bullets.sprites():
             bullet.draw_bullet()
+        self.ghost.draw(self.screen)
+
         # Make the most recently drawn screen visible.
         pygame.display.flip()
 
