@@ -12,6 +12,10 @@ class Settings:
         self.ship_image = 'images/ship3.png'
         self.ship_speed_factor = 2.0
 
+        # Ghost settings
+        self.ghost_image = None
+        self.ghost_speed_factor = 3
+
         # Bullet settings
         self.bullet_speed_factor = 0.75
         self.bullet_width = 7
