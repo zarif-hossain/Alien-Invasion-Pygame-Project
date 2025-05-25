@@ -10,7 +10,7 @@ class Settings:
 
         # Ship settings
         self.ship_image = 'images/ship3.png'
-        self.ship_speed_factor = 2.0
+        self.ship_speed_factor = 0
 
         # Bullet settings
         self.bullet_speed_factor = 0.75

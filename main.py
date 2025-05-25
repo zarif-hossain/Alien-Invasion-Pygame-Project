@@ -11,14 +11,15 @@ class AlienInvasion:
     def __init__(self):
         """Initialize the game, and create game resources."""
         pygame.init()
+
         # Initialize settings.
         self.settings = Settings()
-
         # Set as fullscreen.
         self.screen = pygame.display.set_mode(
             (0,0), pygame.FULLSCREEN)
         self.settings.screen_width = self.screen.get_rect().width
         self.settings.screen_height = self.screen.get_rect().height
+        self.settings.ship_speed_factor = self.settings.screen_width / 480
         
         # Name game window.
         pygame.display.set_caption("ALIEN INVASION - A Pygame Project")
@@ -102,4 +103,5 @@ class AlienInvasion:
 if __name__ == '__main__':
     # Make a game instance, and run the game.
     ai = AlienInvasion()
+    print(ai.settings.screen_width, ai.settings.screen_height)
     ai.run_game()

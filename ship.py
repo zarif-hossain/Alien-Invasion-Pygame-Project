@@ -13,12 +13,12 @@ class Ship:
         self.image = pygame.image.load(self.settings.ship_image)
         # Scale the ship image to fit the screen dimensions
         self.image = pygame.transform.scale(self.image, 
-            (self.settings.screen_width // 32, self.settings.screen_height // 16))
+            (self.settings.screen_width / 32, self.settings.screen_height / 16))
         self.rect = self.image.get_rect()
 
         # Start a new ship at the bottom center of the screen
         self.rect.midbottom = self.screen_rect.midbottom
-        self.rect.y = self.screen_rect.height - ((self.settings.screen_height // 16) * 2)
+        self.rect.y = self.screen_rect.height - ((self.settings.screen_height / 16) * 2)
 
         # Movement flag
         self.moving_right = False
