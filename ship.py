@@ -10,7 +10,8 @@ class Ship:
         self.screen_rect = ai_game.screen.get_rect()
 
         # Load the ship image and get its rect.
-        self.image = pygame.image.load('images/ship3.png')
+        self.image = pygame.image.load(self.settings.ship_image)
+        # Scale the ship image to fit the screen dimensions
         self.image = pygame.transform.scale(self.image, 
             (self.settings.screen_width // 32, self.settings.screen_height // 16))
         self.rect = self.image.get_rect()

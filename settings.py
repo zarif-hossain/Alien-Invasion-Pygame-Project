@@ -9,10 +9,11 @@ class Settings:
         self.bg_color = (0, 0, 20)
 
         # Ship settings
-        self.ship_speed_factor = 20
+        self.ship_image = 'images/ship3.png'
+        self.ship_speed_factor = 2.0
 
         # Bullet settings
-        self.bullet_speed_factor = 25
+        self.bullet_speed_factor = 0.75
         self.bullet_width = 7
         self.bullet_height = 22
         self.bullet_color = (0, 0, 255)
