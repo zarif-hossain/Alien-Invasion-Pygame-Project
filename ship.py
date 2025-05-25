@@ -13,16 +13,18 @@ class Ship:
         self.image = pygame.image.load(self.settings.ship_image)
         # Scale the ship image to fit the screen dimensions
         self.image = pygame.transform.scale(self.image, 
-            (self.settings.screen_width // 32, self.settings.screen_height // 16))
+            (self.settings.screen_width / 32, self.settings.screen_height / 16))
         self.rect = self.image.get_rect()
 
         # Start a new ship at the bottom center of the screen
         self.rect.midbottom = self.screen_rect.midbottom
-        self.rect.y = self.screen_rect.height - ((self.settings.screen_height // 16) * 2)
+        self.rect.y = self.screen_rect.height - ((self.settings.screen_height / 16) * 2)
 
         # Movement flag
         self.moving_right = False
         self.moving_left = False
+        self.moving_up = False
+        self.moving_down = False
 
     def update(self):
         """Update the ship's position based on the movement flag."""
@@ -31,6 +33,10 @@ class Ship:
             self.rect.x += self.settings.ship_speed_factor
         if self.moving_left and self.rect.left > 0:
             self.rect.x -= self.settings.ship_speed_factor
+        if self.moving_up and self.rect.top > 0:
+            self.rect.y -= self.settings.ship_speed_factor
+        if self.moving_down and self.rect.bottom < self.screen_rect.bottom:
+            self.rect.y += self.settings.ship_speed_factor
 
     def blitme(self):
         """Draw the ship at its current location"""
