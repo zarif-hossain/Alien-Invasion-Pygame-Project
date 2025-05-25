@@ -26,7 +26,7 @@ source pygame-env/bin/activate  # activate virtual environment
 Then install pygame using:
 
 ```bash
-sudo apt install pygame
+pip install pygame
 ```
 
 To **deactivate** the virtual environment, run:

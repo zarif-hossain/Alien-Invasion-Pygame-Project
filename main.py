@@ -12,26 +12,34 @@ class AlienInvasion:
     def __init__(self):
         """Initialize the game, and create game resources."""
         pygame.init()
+
+        # Create a screen object and set it to fullscreen mode.
+        self.screen = pygame.display.set_mode((0,0), pygame.FULLSCREEN) 
+
+        # Name game window.
+        pygame.display.set_caption("FANTASMA")
+
         # Initialize settings.
         self.settings = Settings()
-
-        # Set as fullscreen.
-        self.screen = pygame.display.set_mode(
-            (0,0), pygame.FULLSCREEN)
         self.settings.screen_width = self.screen.get_rect().width
         self.settings.screen_height = self.screen.get_rect().height
-        
-        # Name game window.
-        pygame.display.set_caption("ALIEN INVASION - A Pygame Project")
+        self.settings.ship_speed_factor = self.settings.screen_width / 480
         
         # Make an instance of Ship after the screen has been created
         # and self argument refers to the current instance of AlienInvasion
         # to give Ship object access to the game's resources
         self.ship = Ship(self)
         self.bullets = pygame.sprite.Group()
-
         self.ghost = pygame.sprite.Group()
         self._create_fantasma()
+
+    def run_game(self):
+        """Start the main loop for the game."""
+        while True:
+            self._check_events()
+            self.ship.update()
+            self._update_bullets()
+            self._update_screen()
 
     def _check_events(self):
         """Respond to keypresses and mouse events."""
@@ -59,6 +67,12 @@ class AlienInvasion:
         elif event.key == pygame.K_LEFT:
             # Move the ship to the left.
             self.ship.moving_left = True
+        elif event.key == pygame.K_UP:
+            # Move the ship up.
+            self.ship.moving_up = True
+        elif event.key == pygame.K_DOWN:
+            # Move the ship down.
+            self.ship.moving_down = True
 
     def _check_keyup_events(self, event):
         """Respond to key releases."""
@@ -68,6 +82,12 @@ class AlienInvasion:
         elif event.key == pygame.K_LEFT:
             # Stop moving the ship to the left.
             self.ship.moving_left = False
+        elif event.key == pygame.K_UP:
+            # Stop moving the ship up.
+            self.ship.moving_up = False
+        elif event.key == pygame.K_DOWN:
+            # Stop moving the ship down.
+            self.ship.moving_down = False
 
     def _fire_bullet(self):
         """Create a new bullet and add it to the bullets group."""
@@ -102,14 +122,6 @@ class AlienInvasion:
 
         # Make the most recently drawn screen visible.
         pygame.display.flip()
-
-    def run_game(self):
-        """Start the main loop for the game."""
-        while True:
-            self._check_events()
-            self.ship.update()
-            self._update_bullets()
-            self._update_screen()
 
 if __name__ == '__main__':
     # Make a game instance, and run the game.
