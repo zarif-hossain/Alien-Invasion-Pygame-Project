@@ -9,6 +9,8 @@ class Settings:
         self.bg_color = (0, 0, 20)
 
         # Ship settings
+        self.ship_width = 60
+        self.ship_height = 48
         self.ship_speed_factor = 20
 
         # Bullet settings
