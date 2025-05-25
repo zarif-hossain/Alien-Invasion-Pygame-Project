@@ -1,15 +1,19 @@
 # ALIEN INVASION
 
-
 ## 📄 Documentation
 
 See below for quickstart installation of the required modules
 
-
 <details open>
-<summary>Install</summary>
+<summary>Installations</summary>
 
-### Installing on Linux Mint
+### Getting Started on Windows
+
+First upgrade pip (optional but recommended) with `python -m pip install --upgrade pip`
+
+Then to install pygame run `pip install pygame`
+
+### Getting Started on Linux Mint
 
 Linux Mint (like Ubuntu and Debian) now protects the system Python to avoid breaking the OS by discouraging pip3 install globally.
 
@@ -20,11 +24,13 @@ source pygame-env/bin/activate  # activate virtual environment
 ```
 
 Then install pygame using:
+
 ```bash
 sudo apt install pygame
 ```
 
 To **deactivate** the virtual environment, run:
+
 ```bash
 deactivate
 ```
